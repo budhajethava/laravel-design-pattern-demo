@@ -1,0 +1,22 @@
+.card-footer.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+.rounded-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.edit-roun-img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+.del-icon {
+  position: absolute;
+    left: 168px;
+    top: 34px;
+}
