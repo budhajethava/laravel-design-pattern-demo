@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CategoryService::class, function ($app) {
             return new CategoryService($app->make(CategoryRepositoryInterface::class));
         });
-        $this->app->singleton(ExternalApiHelper::class, function($app) {
+        $this->app->bind(ExternalApiHelper::class, function($app) {
             return new ExternalApiHelper('Hello, test!');
         });
         if ($this->app->environment('local')) {
