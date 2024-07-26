@@ -17,7 +17,10 @@
   </button>
 </div>
 @endif
+<div>
+<span class="text-left">Categories</span>
 <a href="{{route('category.create')}}" class="btn btn-secondary mb-2 float-right">Add Category</a>
+</div>
 <table class="table table-striped">
     <thead>
         <tr>

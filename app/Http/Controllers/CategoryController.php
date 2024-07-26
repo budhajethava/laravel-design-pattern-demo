@@ -15,11 +15,12 @@ use App\Adapter\BigCommerceApiAdapter;
 use App\Adapter\BigCommerceApi;
 use App\Singleton\TestSingleton;
 use App\Helpers\ExternalApiHelper;
+use App\Factories\PaymenFactory;
 
 class CategoryController extends Controller
 {
 
-    public function __construct(protected CategoryService $categoryService) {
+    public function __construct(protected CategoryService $categoryService, protected PaymenFactory $paymentFactory) {
     }
 
     /**
@@ -79,7 +80,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         try {
-            $category = Category::findOrFail($id);
+            $category = $this->categoryService->find($id);
             return view('category.manage', compact('category'));
         } catch (\Exception $e) {
             return redirect('/category')->with('error', 'Requested category not found!');
@@ -173,7 +174,7 @@ class CategoryController extends Controller
      */
     public function factoryPattern()
     {
-        $paymentFactory = new \App\Factories\PaymenFactory();
+        $paymentFactory = new $this->paymentFactory();
         $payment = $paymentFactory->initPayment();
         $result = $payment->charge(100);
         die($result.'<br/><br/><button type="button" class="btn btn-primary"><a href="/dashboard">Dashboard</a></button>');
